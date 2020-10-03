@@ -1,10 +1,19 @@
 import React from 'react'
-import { Dashboard } from '../components'
+import { Dashboard, ChartWithFeatures } from '../components'
+import socket from '../utils/socket'
 
-function LiveView() {
+function LiveView({ data }) {
+  React.useEffect(() => {
+    socket.emit('ping', {})
+    socket.emit('sub', { state: true })
+    return () => {
+      socket.emit('ping', {})
+      socket.emit('unsub', { state: false })
+    }
+  }, [])
   return (
     <Dashboard title='Live Tracking'>
-      <div>History</div>
+      <ChartWithFeatures data={data} />
     </Dashboard>
   )
 }

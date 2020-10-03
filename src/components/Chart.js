@@ -3,7 +3,6 @@ import { createChart } from 'lightweight-charts'
 import { useMeasureDimension } from '../hooks'
 
 function ChartContainer({ dataStream = [], data }) {
-  console.log('container')
   const chartDivRef = React.useRef()
   const { width = 100, height = 100 } = useMeasureDimension(chartDivRef)
   const [chart, setChart] = React.useState(null)

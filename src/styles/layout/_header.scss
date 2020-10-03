@@ -29,10 +29,28 @@ header {
           display: inline-block;
           text-decoration: none;
           padding: 1rem;
+          position: relative;
           &:hover,
           &.is-active {
             color: $color-blue-light;
             border-bottom: 2px solid $color-off-white;
+          }
+
+          &.is-offline::after,
+          &.is-online::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            z-index: 4;
+          }
+
+          &.is-offline::after {
+            background-color: $color-red;
+          }
+          &.is-online::after {
+            background-color: $color-green;
           }
         }
       }

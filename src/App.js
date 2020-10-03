@@ -8,18 +8,50 @@ import {
   Redirect,
 } from 'react-router-dom'
 import axios from 'axios'
+import socket from './utils/socket'
 import { HistoricalView, LiveView } from './features'
 import { useLocalStorageState } from './hooks'
 import { mergeSort, sortedUniqueBy } from './utils/utilities'
 
 function App() {
   const [data, setData] = useLocalStorageState('history', [])
+  const [isOnline, setIsOnline] = React.useState(false)
+  const [liveData, setLiveDate] = React.useState(null)
+  const [liveDataError, setLiveDateError] = React.useState(null)
 
   const setHistoricalData = React.useCallback((value) => setData(value), [
     setData,
   ])
   const [isLoading, setIsLoading] = React.useState(false)
   const [isError, setIsError] = React.useState(false)
+
+  React.useEffect(() => {
+    socket.on('connect', () => {
+      console.log('connected')
+      setIsOnline(true)
+    })
+    socket.on('data', (data, callback) => {
+      if (data !== 'pong') {
+        const [time, open, high, low, close, volume] = data.split(',')
+        setLiveDate({
+          time: Number(time.slice(0, 10)),
+          open: Number(open),
+          high: Number(high),
+          low: Number(low),
+          close: Number(close),
+          volume: Number(volume),
+        })
+      }
+      callback(1) //Acknowledgement
+    })
+    socket.on('error', (err) => {
+      setLiveDateError(true)
+    })
+    socket.on('disconnect', () => {
+      setIsOnline(false)
+    })
+    console.log(socket)
+  }, [])
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +74,6 @@ function App() {
           mergeSort(unsortedData),
           (i) => i.time
         )
-        console.log(sortedData)
         setHistoricalData(sortedData)
       } catch (error) {
         setIsError(true)
@@ -55,7 +86,7 @@ function App() {
   return (
     <Router>
       <div className='app'>
-        <Header />
+        <Header isOnline={isOnline} />
         <Switch>
           <Route path='/home'>
             <HistoricalView
@@ -65,7 +96,7 @@ function App() {
             />
           </Route>
           <Route path='/live'>
-            <LiveView />
+            <LiveView data={liveData} liveDataError={liveDataError} />
           </Route>
           <Route path='/'>
             <Redirect to='/home' />

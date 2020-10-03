@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function Header() {
+function Header({ isOnline }) {
   return (
     <header>
       <nav>
@@ -18,7 +18,14 @@ function Header() {
             </NavLink>
           </li>
           <li>
-            <NavLink to='/live' id='link-live' activeClassName='is-active'>
+            <NavLink
+              to='/live'
+              id='link-live'
+              activeClassName='is-active'
+              className={`online-status ${
+                isOnline ? 'is-online' : 'is-offline'
+              }`}
+            >
               Live
             </NavLink>
           </li>
