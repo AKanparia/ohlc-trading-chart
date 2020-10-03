@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+import axios from 'axios'
+
+console.log(process.env)
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL
+axios.defaults.headers.common['Accept-Encoding'] = 'gzip, deflate'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
