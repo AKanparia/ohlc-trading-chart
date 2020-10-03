@@ -1,3 +1,4 @@
 import useLocalStorageState from './useLocalStorageState'
+import useMeasureDimension from './useMeasureDimension'
 
-export { useLocalStorageState }
+export { useLocalStorageState, useMeasureDimension }
