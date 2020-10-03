@@ -1,0 +1,43 @@
+footer {
+  background-color: $color-primary-dark;
+  @include box_shadow();
+
+  .footer-content {
+    width: 80%;
+    min-height: 50px;
+    margin: auto;
+    padding: 1rem, 0rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.7rem;
+    color: $color-white;
+
+    div {
+      a {
+        display: inline-block;
+        padding: 1rem;
+        text-decoration: none;
+      }
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      li {
+        a {
+          display: inline-block;
+          text-decoration: none;
+          padding: 1rem;
+        }
+      }
+    }
+
+    @include media('<=tablet') {
+      flex-direction: column;
+    }
+  }
+}

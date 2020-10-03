@@ -1,0 +1,45 @@
+header {
+  background-color: $color-primary-dark;
+  position: fixed;
+  width: 100vw;
+  min-height: 56px;
+  top: 0;
+  z-index: 2;
+  text-transform: uppercase;
+  @include box_shadow();
+
+  nav {
+    width: 80%;
+    margin: auto;
+    padding: 1rem, 0rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    color: $color-white;
+
+    ul {
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+      li {
+        a {
+          display: inline-block;
+          text-decoration: none;
+          padding: 1rem;
+          &:hover,
+          &.is-active {
+            color: $color-blue-light;
+            border-bottom: 2px solid $color-off-white;
+          }
+        }
+      }
+    }
+
+    .logo {
+      flex: 3;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  background: $color-primary-light;
+  box-sizing: border-box;
+  overscroll-behavior: none;
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+.container {
+  width: 1350px;
+  min-width: 1350px;
+  margin: 0 auto;
+  @include media('<=1400px') {
+    width: 1280px;
+    min-width: 1280px;
+  }
+  @include media('<=desktop') {
+    width: 1080px;
+    min-width: 1080px;
+  }
+  @include media('<=1080px') {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  .row {
+    display: flex;
+    height: 100%;
+  }
+}

@@ -1,8 +1,34 @@
 import React from 'react'
-import './App.css'
+import './styles/styles.scss'
+import { Header, Footer } from './components'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+import { HistoricalView, LiveView } from './features'
 
 function App() {
-  return <div>Trading Charts</div>
+  return (
+    <Router>
+      <div className='app'>
+        <Header />
+        <Switch>
+          <Route path='/home'>
+            <HistoricalView />
+          </Route>
+          <Route path='/live'>
+            <LiveView />
+          </Route>
+          <Route path='/'>
+            <Redirect to='/home' />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
+  )
 }
 
 export default App
