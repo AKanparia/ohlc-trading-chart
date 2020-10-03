@@ -1,10 +1,10 @@
 import React from 'react'
 import { Dashboard } from '../components'
 
-function HistoricalView() {
+function HistoricalView({ data, isLoading, isError }) {
   return (
     <Dashboard title='Historical Overview'>
-      <div>History</div>
+      <pre>{JSON.stringify(data, undefined, 2)}</pre>
     </Dashboard>
   )
 }
