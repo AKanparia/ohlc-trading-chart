@@ -1,0 +1,23 @@
+.dashboard {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  .row {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .dashboard-title {
+      flex-shrink: 0;
+      padding: 1rem;
+      @include media('<=phone') {
+        padding: 1rem 0;
+      }
+    }
+    .dashboard-content {
+      flex: 1 0;
+      padding: 1rem;
+      @include media('<=phone') {
+        padding: 1rem 0;
+      }
+    }
+  }
+}

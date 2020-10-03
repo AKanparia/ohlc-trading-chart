@@ -1,0 +1,32 @@
+.chart-container {
+  height: 100%;
+  .chart-symbol {
+    padding-bottom: 1rem;
+  }
+  .chart-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    .info-card {
+      flex: 1 0 auto;
+      @include media('<=tablet') {
+        width: 50%;
+      }
+    }
+
+    @include media('<=phone') {
+      flex-direction: column;
+    }
+  }
+  .chart {
+    height: 50vh;
+    padding: 0.5rem;
+    background-color: $color-primary-dark;
+    border-radius: 5px;
+    @include box_shadow();
+    @include media('<=phone') {
+      height: 80vh;
+    }
+  }
+}
