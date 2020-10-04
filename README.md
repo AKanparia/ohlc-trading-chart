@@ -1,3 +1,33 @@
+# OHLC Dashboard
+
+An open-high-low-close chart (also OHLC) is a type of chart typically used to illustrate movements in the price of a financial instrument over time. Each vertical line on the chart shows the price range (the highest and lowest prices) over one unit of time, e.g., one day or one hour. Tick marks project from each side of the line indicating the opening price (e.g., for a daily bar chart this would be the starting price for that day) on the left, and the closing price for that time period on the right. The bars may be shown in different hues depending on whether prices rose or fell in that period. [wiki](https://en.wikipedia.org/wiki/Open-high-low-close_chart)
+
+# App Details
+
+Application provides user with dashboard screens, to view the historical data and also a live feed of the stock value.
+
+Hosted on Heroku : [Take me there!](http://ohlc-chart-assignment.herokuapp.com/)
+
+## App Details
+
+### Screenshot
+
+![Application screenshot](./assets/Screenshot.JPG?raw=true)
+
+### Features:
+
+- App uses [Lightweight Chart](https://www.tradingview.com/lightweight-charts/) by [TradingView](https://www.tradingview.com/)
+- A **responsive chart** view with capability to **pan and zoom**.
+- OHCL data representation above the chart, as pan and zoom or select the OHCL bars.
+- Provides the **percentage change** value of the stock for you to make better analysis and quick decisions.
+- App utilizes [RSKV kaboom](http://kaboom.rksv.net/) APIs .
+- **Historical data** plotted in OHLC chart.
+  - This view show historical data of each day since 31st Dec, 2004.
+  - Data provide by **REST API**: _/api/historical_
+- **Live feed** of the Stock in OHLC chart.
+  - This view show live feed of the stock values which refreshes every 100ms. You always get the latest details, to make quick decisions.
+  - Data provided by **Websocket API** : _/watch_
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -26,43 +56,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
