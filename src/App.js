@@ -27,7 +27,6 @@ function App() {
 
   React.useEffect(() => {
     socket.on('connect', () => {
-      console.log('connected')
       setIsOnline(true)
     })
     socket.on('data', (data, callback) => {
@@ -50,7 +49,6 @@ function App() {
     socket.on('disconnect', () => {
       setIsOnline(false)
     })
-    console.log(socket)
   }, [])
 
   React.useEffect(() => {

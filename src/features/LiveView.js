@@ -13,7 +13,7 @@ function LiveView({ data }) {
   }, [])
   return (
     <Dashboard title='Live Tracking'>
-      <ChartWithFeatures data={data} />
+      <ChartWithFeatures data={data} isLive={true} />
     </Dashboard>
   )
 }

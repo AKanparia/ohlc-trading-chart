@@ -2,7 +2,7 @@ import React from 'react'
 import { createChart } from 'lightweight-charts'
 import { useMeasureDimension } from '../hooks'
 
-function ChartContainer({ dataStream = [], data }) {
+function ChartContainer({ dataStream = [], data, setLegendInfo, isLive }) {
   const chartDivRef = React.useRef()
   const { width = 100, height = 100 } = useMeasureDimension(chartDivRef)
   const [chart, setChart] = React.useState(null)
@@ -33,10 +33,26 @@ function ChartContainer({ dataStream = [], data }) {
 
   const liveData = React.useMemo(() => data, [data])
 
+  const handleCrosshairMoved = React.useCallback(
+    (param) => {
+      if (!param.point) return
+      const iterator = param.seriesPrices.values()
+      const ohlc = iterator.next().value
+      const volume = iterator.next().value
+      const time = param.time
+
+      setLegendInfo({ ...ohlc, volume, time })
+    },
+    [setLegendInfo]
+  )
+
   React.useEffect(() => {
     const chart = createChart(chartDivRef.current, {
       width: 100,
       height: 100,
+      localization: {
+        locale: 'en-IN',
+      },
       layout: {
         backgroundColor: '#222327',
         textColor: '#e0e0e0',
@@ -47,6 +63,11 @@ function ChartContainer({ dataStream = [], data }) {
           bottom: 0.25,
         },
         borderVisible: true,
+      },
+      crosshair: {
+        vertLine: {
+          labelVisible: false,
+        },
       },
       grid: {
         vertLines: {
@@ -81,7 +102,12 @@ function ChartContainer({ dataStream = [], data }) {
     setBarSeries(barSeries)
     setVolumeSeries(volumeSeries)
     setChart(chart)
-  }, [])
+    if (!isLive) chart.subscribeCrosshairMove(handleCrosshairMoved)
+
+    return () => {
+      chart.unsubscribeCrosshairMove(handleCrosshairMoved)
+    }
+  }, [handleCrosshairMoved, isLive])
 
   React.useEffect(() => {
     chart && chart.resize(width, height)
