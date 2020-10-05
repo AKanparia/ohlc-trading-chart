@@ -18,7 +18,7 @@ Hosted on Heroku : [Take me there!](http://ohlc-chart-assignment.herokuapp.com/)
 - A **responsive chart** view with capability to **pan and zoom**.
 - OHCL data representation above the chart, as pan and zoom or select the OHCL bars.
 - Provides the **percentage change** value of the stock for you to make better analysis and quick decisions.
-- App utilizes [RSKV kaboom](http://kaboom.rksv.net/) APIs .
+- App utilizes [RKSV kaboom](http://kaboom.rksv.net/) APIs .
 - **Historical data** plotted in OHLC chart.
   - This view show historical data of each day since 31st Dec, 2004.
   - Data provide by **REST API**: _/api/historical_
