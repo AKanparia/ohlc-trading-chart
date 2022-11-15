@@ -6,7 +6,7 @@ An open-high-low-close chart (also OHLC) is a type of chart typically used to il
 
 Application provides user with dashboard screens, to view the historical data and also a live feed of the stock value.
 
-Hosted on Heroku : [Take me there!](http://ohlc-chart-assignment.herokuapp.com/)
+Hosted on Heroku : N/A
 
 ### Screenshot
 
